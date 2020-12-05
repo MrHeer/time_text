@@ -48,10 +48,10 @@ class TimeText extends StatefulWidget {
       : this.formatter = formatter ?? DateFormat.Hm().format,
         super(key: key);
 
-  // time formatter, default [DateFormat().Hm().format]
+  /// This is time formatter, default [DateFormat.Hm().format]
   final Formatter formatter;
 
-  // update duration, default [Duration(seconds: 1)]
+  /// update duration, default [Duration(seconds: 1)]
   final Duration duration;
 
   /// If non-null, the style to use for this text.
