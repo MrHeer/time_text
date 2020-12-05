@@ -1,8 +1,8 @@
 name: time_text
 description: A time text widget.
 version: 0.0.1
-author:
-homepage:
+author: MrHeer (hlm52pk@163.com)
+homepage: https://github.com/MrHeer/time_text
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
