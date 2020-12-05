@@ -32,20 +32,20 @@ class TimeText extends StatefulWidget {
   /// will not be rendered. Otherwise, it will be shown with the given overflow option
   TimeText(
       {Key key,
-        formatter,
-        this.duration = const Duration(seconds: 1),
-        this.style,
-        this.strutStyle,
-        this.textAlign,
-        this.textDirection,
-        this.locale,
-        this.softWrap,
-        this.overflow,
-        this.textScaleFactor,
-        this.maxLines,
-        this.semanticsLabel,
-        this.textWidthBasis,
-        this.textHeightBehavior})
+      formatter,
+      this.duration = const Duration(seconds: 1),
+      this.style,
+      this.strutStyle,
+      this.textAlign,
+      this.textDirection,
+      this.locale,
+      this.softWrap,
+      this.overflow,
+      this.textScaleFactor,
+      this.maxLines,
+      this.semanticsLabel,
+      this.textWidthBasis,
+      this.textHeightBehavior})
       : this.formatter = formatter ?? DateFormat.Hm().format,
         super(key: key);
 
@@ -174,7 +174,7 @@ class _TimeTextState extends State<TimeText> {
 
   @override
   void dispose() {
-    if(_timer != null) {
+    if (_timer != null) {
       _timer.cancel();
     }
     super.dispose();
