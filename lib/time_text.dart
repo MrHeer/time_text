@@ -32,7 +32,7 @@ class TimeText extends StatefulWidget {
   /// will not be rendered. Otherwise, it will be shown with the given overflow option
   TimeText(
       {Key key,
-      formatter,
+      Formatter formatter,
       this.duration = const Duration(seconds: 1),
       this.style,
       this.strutStyle,
