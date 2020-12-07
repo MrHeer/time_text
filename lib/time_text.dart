@@ -151,7 +151,7 @@ class TimeText extends StatefulWidget {
 
 class _TimeTextState extends State<TimeText> {
   late String _timeString;
-  late Timer _timer;
+  late final Timer _timer;
 
   void _getTime() {
     final DateTime now = DateTime.now();
