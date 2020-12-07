@@ -31,8 +31,8 @@ class TimeText extends StatefulWidget {
   /// If the [softWrap] is true or null, the glyph causing overflow, and those that follow,
   /// will not be rendered. Otherwise, it will be shown with the given overflow option
   TimeText(
-      {Key key,
-      Formatter formatter,
+      {Key? key,
+      Formatter? formatter,
       this.duration = const Duration(seconds: 1),
       this.style,
       this.strutStyle,
@@ -60,13 +60,13 @@ class TimeText extends StatefulWidget {
   /// If the style's "inherit" property is true, the style will be merged with
   /// the closest enclosing [DefaultTextStyle]. Otherwise, the style will
   /// replace the closest enclosing [DefaultTextStyle].
-  final TextStyle style;
+  final TextStyle? style;
 
   /// {@macro flutter.painting.textPainter.strutStyle}
-  final StrutStyle strutStyle;
+  final StrutStyle? strutStyle;
 
   /// How the text should be aligned horizontally.
-  final TextAlign textAlign;
+  final TextAlign? textAlign;
 
   /// The directionality of the text.
   ///
@@ -81,7 +81,7 @@ class TimeText extends StatefulWidget {
   /// its left.
   ///
   /// Defaults to the ambient [Directionality], if any.
-  final TextDirection textDirection;
+  final TextDirection? textDirection;
 
   /// Used to select a font when the same Unicode character can
   /// be rendered differently, depending on the locale.
@@ -90,17 +90,17 @@ class TimeText extends StatefulWidget {
   /// is inherited from the enclosing app with `Localizations.localeOf(context)`.
   ///
   /// See [RenderParagraph.locale] for more information.
-  final Locale locale;
+  final Locale? locale;
 
   /// Whether the text should break at soft line breaks.
   ///
   /// If false, the glyphs in the text will be positioned as if there was unlimited horizontal space.
-  final bool softWrap;
+  final bool? softWrap;
 
   /// How visual overflow should be handled.
   ///
   /// Defaults to retrieving the value from the nearest [DefaultTextStyle] ancestor.
-  final TextOverflow overflow;
+  final TextOverflow? overflow;
 
   /// The number of font pixels for each logical pixel.
   ///
@@ -110,7 +110,7 @@ class TimeText extends StatefulWidget {
   /// The value given to the constructor as textScaleFactor. If null, will
   /// use the [MediaQueryData.textScaleFactor] obtained from the ambient
   /// [MediaQuery], or 1.0 if there is no [MediaQuery] in scope.
-  final double textScaleFactor;
+  final double? textScaleFactor;
 
   /// An optional maximum number of lines for the text to span, wrapping if necessary.
   /// If the text exceeds the given number of lines, it will be truncated according
@@ -123,7 +123,7 @@ class TimeText extends StatefulWidget {
   /// an explicit number for its [DefaultTextStyle.maxLines], then the
   /// [DefaultTextStyle] value will take precedence. You can use a [RichText]
   /// widget directly to entirely override the [DefaultTextStyle].
-  final int maxLines;
+  final int? maxLines;
 
   /// An alternative semantics label for this text.
   ///
@@ -137,21 +137,21 @@ class TimeText extends StatefulWidget {
   /// ```dart
   /// Text(r'$$', semanticsLabel: 'Double dollars')
   /// ```
-  final String semanticsLabel;
+  final String? semanticsLabel;
 
   /// {@macro flutter.painting.textPainter.textWidthBasis}
-  final TextWidthBasis textWidthBasis;
+  final TextWidthBasis? textWidthBasis;
 
   /// {@macro flutter.dart:ui.textHeightBehavior}
-  final ui.TextHeightBehavior textHeightBehavior;
+  final ui.TextHeightBehavior? textHeightBehavior;
 
   @override
   State<StatefulWidget> createState() => _TimeTextState();
 }
 
 class _TimeTextState extends State<TimeText> {
-  String _timeString;
-  Timer _timer;
+  late String _timeString;
+  late Timer _timer;
 
   void _getTime() {
     final DateTime now = DateTime.now();
@@ -174,9 +174,7 @@ class _TimeTextState extends State<TimeText> {
 
   @override
   void dispose() {
-    if (_timer != null) {
-      _timer.cancel();
-    }
+    _timer.cancel();
     super.dispose();
   }
 
