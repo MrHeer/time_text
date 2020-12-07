@@ -162,13 +162,13 @@ class _TimeTextState extends State<TimeText> {
   }
 
   String _formatDateTime(DateTime dateTime) {
-    return this.widget.formatter(dateTime);
+    return widget.formatter(dateTime);
   }
 
   @override
   void initState() {
     _timeString = _formatDateTime(DateTime.now());
-    _timer = Timer.periodic(Duration(seconds: 1), (Timer t) => _getTime());
+    _timer = Timer.periodic(widget.duration, (Timer t) => _getTime());
     super.initState();
   }
 
@@ -184,18 +184,18 @@ class _TimeTextState extends State<TimeText> {
   Widget build(BuildContext context) {
     return Text(
       _timeString,
-      style: this.widget.style,
-      strutStyle: this.widget.strutStyle,
-      textAlign: this.widget.textAlign,
-      textDirection: this.widget.textDirection,
-      locale: this.widget.locale,
-      softWrap: this.widget.softWrap,
-      overflow: this.widget.overflow,
-      textScaleFactor: this.widget.textScaleFactor,
-      maxLines: this.widget.maxLines,
-      semanticsLabel: this.widget.semanticsLabel,
-      textWidthBasis: this.widget.textWidthBasis,
-      textHeightBehavior: this.widget.textHeightBehavior,
+      style: widget.style,
+      strutStyle: widget.strutStyle,
+      textAlign: widget.textAlign,
+      textDirection: widget.textDirection,
+      locale: widget.locale,
+      softWrap: widget.softWrap,
+      overflow: widget.overflow,
+      textScaleFactor: widget.textScaleFactor,
+      maxLines: widget.maxLines,
+      semanticsLabel: widget.semanticsLabel,
+      textWidthBasis: widget.textWidthBasis,
+      textHeightBehavior: widget.textHeightBehavior,
     );
   }
 }

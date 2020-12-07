@@ -1,8 +1,9 @@
 # Changelog
 
-## [0.0.1+2] - 2020-12-06
+## [0.0.1+2] - 2020-12-07
 
 - Add type define for formatter
+- Fix duration not work
 
 ## [0.0.1+1] - 2020-12-05
 
