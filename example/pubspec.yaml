@@ -24,7 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   wakelock: ^0.2.1+1
-  time_text: ^0.1.0-nullsafety
+  time_text: ^0.1.0-nullsafety.0
 
 
   # The following adds the Cupertino Icons font to your application.

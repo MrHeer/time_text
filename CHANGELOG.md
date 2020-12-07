@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.1.0-nullsafety] - 2020-12-07
+## [0.1.0-nullsafety.0] - 2020-12-07
 
 - null safety
 
