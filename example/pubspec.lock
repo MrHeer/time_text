@@ -99,7 +99,7 @@ packages:
       name: intl
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.16.1"
+    version: "0.17.0-nullsafety.2"
   js:
     dependency: transitive
     description:
@@ -178,10 +178,10 @@ packages:
   time_text:
     dependency: "direct main"
     description:
-      path: ".."
-      relative: true
-    source: path
-    version: "0.0.1+2"
+      name: time_text
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.1.0-nullsafety.0"
   typed_data:
     dependency: transitive
     description:
@@ -218,5 +218,5 @@ packages:
     source: hosted
     version: "0.1.0+3"
 sdks:
-  dart: ">=2.12.0-0.0 <3.0.0"
+  dart: ">=2.12.0-29.10.beta <3.0.0"
   flutter: ">=1.20.0 <2.0.0"
