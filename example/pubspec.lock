@@ -43,13 +43,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.15.0"
-  csslib:
-    dependency: transitive
-    description:
-      name: csslib
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.16.2"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -65,7 +58,7 @@ packages:
     source: hosted
     version: "1.2.0"
   flutter:
-    dependency: "direct main"
+    dependency: transitive
     description: flutter
     source: sdk
     version: "0.0.0"
@@ -79,27 +72,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  html:
-    dependency: transitive
-    description:
-      name: html
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.14.0+4"
-  import_js_library:
-    dependency: transitive
-    description:
-      name: import_js_library
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "1.0.2"
   intl:
     dependency: transitive
     description:
       name: intl
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.17.0-nullsafety.2"
+    version: "0.17.0"
   js:
     dependency: transitive
     description:
@@ -181,7 +160,7 @@ packages:
       name: time_text
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.1.0-nullsafety.0"
+    version: "0.1.0"
   typed_data:
     dependency: transitive
     description:
@@ -202,21 +181,28 @@ packages:
       name: wakelock
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.2.1+1"
+    version: "0.4.0"
+  wakelock_macos:
+    dependency: transitive
+    description:
+      name: wakelock_macos
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.1.0"
   wakelock_platform_interface:
     dependency: transitive
     description:
       name: wakelock_platform_interface
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.1.0+1"
+    version: "0.2.0"
   wakelock_web:
     dependency: transitive
     description:
       name: wakelock_web
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.1.0+3"
+    version: "0.2.0"
 sdks:
-  dart: ">=2.12.0-29.10.beta <3.0.0"
-  flutter: ">=1.20.0"
+  dart: ">=2.12.0 <3.0.0"
+  flutter: ">=2.0.0"
