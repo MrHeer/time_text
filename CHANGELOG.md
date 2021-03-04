@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.0] - 2021-03-03
+
+- upgrade Flutter to 2.0.0
+- upgrade dependencies
+
 ## [0.1.0-nullsafety.0] - 2020-12-07
 
 - null safety

@@ -13,11 +13,11 @@ void main() {
   });
 
   testWidgets('TimeText has a current time with a formatter',
-          (WidgetTester tester) async {
-        await tester.pumpWidget(TimeText(
-            formatter: DateFormat.Hms().format, textDirection: TextDirection.ltr));
-        final currentTime = DateFormat.Hms().format(DateTime.now());
-        final timeTextFinder = find.text(currentTime);
-        expect(timeTextFinder, findsOneWidget);
-      });
+      (WidgetTester tester) async {
+    await tester.pumpWidget(TimeText(
+        formatter: DateFormat.Hms().format, textDirection: TextDirection.ltr));
+    final currentTime = DateFormat.Hms().format(DateTime.now());
+    final timeTextFinder = find.text(currentTime);
+    expect(timeTextFinder, findsOneWidget);
+  });
 }

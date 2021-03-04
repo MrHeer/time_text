@@ -33,7 +33,7 @@ class TimeText extends StatefulWidget {
   TimeText(
       {Key? key,
       Formatter? formatter,
-      this.duration = const Duration(seconds: 1),
+      Duration? duration,
       this.style,
       this.strutStyle,
       this.textAlign,
@@ -47,6 +47,7 @@ class TimeText extends StatefulWidget {
       this.textWidthBasis,
       this.textHeightBehavior})
       : this.formatter = formatter ?? DateFormat.Hm().format,
+        this.duration = duration ?? Duration(seconds: 1),
         super(key: key);
 
   /// This is time formatter, default [DateFormat.Hm().format]
