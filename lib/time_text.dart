@@ -11,7 +11,7 @@ typedef String Formatter(DateTime dateTime);
 
 /// A run of text with a single style to show current time.
 ///
-/// The [Text] widget displays a string of text with single style. The string
+/// The [TimeText] widget displays a string of text with single style like [Text]. The string
 /// might break across multiple lines or might all be displayed on the same line
 /// depending on the layout constraints.
 ///
@@ -30,31 +30,30 @@ class TimeText extends StatefulWidget {
   /// The [overflow] property's behavior is affected by the [softWrap] argument.
   /// If the [softWrap] is true or null, the glyph causing overflow, and those that follow,
   /// will not be rendered. Otherwise, it will be shown with the given overflow option
-  TimeText(
-      {Key? key,
-      Formatter? formatter,
-      Duration? duration,
-      this.style,
-      this.strutStyle,
-      this.textAlign,
-      this.textDirection,
-      this.locale,
-      this.softWrap,
-      this.overflow,
-      this.textScaleFactor,
-      this.maxLines,
-      this.semanticsLabel,
-      this.textWidthBasis,
-      this.textHeightBehavior})
-      : this.formatter = formatter ?? DateFormat.Hm().format,
-        this.duration = duration ?? Duration(seconds: 1),
-        super(key: key);
+  const TimeText({
+    super.key,
+    this.formatter,
+    this.duration,
+    this.style,
+    this.strutStyle,
+    this.textAlign,
+    this.textDirection,
+    this.locale,
+    this.softWrap,
+    this.overflow,
+    this.textScaleFactor,
+    this.maxLines,
+    this.semanticsLabel,
+    this.textWidthBasis,
+    this.textHeightBehavior,
+    this.selectionColor,
+  });
 
   /// This is time formatter, default [DateFormat.Hm().format]
-  final Formatter formatter;
+  final Formatter? formatter;
 
   /// update duration, default [Duration(seconds: 1)]
-  final Duration duration;
+  final Duration? duration;
 
   /// If non-null, the style to use for this text.
   ///
@@ -100,7 +99,8 @@ class TimeText extends StatefulWidget {
 
   /// How visual overflow should be handled.
   ///
-  /// Defaults to retrieving the value from the nearest [DefaultTextStyle] ancestor.
+  /// If this is null [TextStyle.overflow] will be used, otherwise the value
+  /// from the nearest [DefaultTextStyle] ancestor will be used.
   final TextOverflow? overflow;
 
   /// The number of font pixels for each logical pixel.
@@ -126,25 +126,24 @@ class TimeText extends StatefulWidget {
   /// widget directly to entirely override the [DefaultTextStyle].
   final int? maxLines;
 
-  /// An alternative semantics label for this text.
-  ///
-  /// If present, the semantics of this widget will contain this value instead
-  /// of the actual text. This will overwrite any of the semantics labels applied
-  /// directly to the [TextSpan]s.
-  ///
-  /// This is useful for replacing abbreviations or shorthands with the full
-  /// text value:
-  ///
-  /// ```dart
-  /// Text(r'$$', semanticsLabel: 'Double dollars')
-  /// ```
+  /// {@macro flutter.widgets.Text.semanticsLabel}
   final String? semanticsLabel;
 
   /// {@macro flutter.painting.textPainter.textWidthBasis}
   final TextWidthBasis? textWidthBasis;
 
-  /// {@macro flutter.dart:ui.textHeightBehavior}
+  /// {@macro dart.ui.textHeightBehavior}
   final ui.TextHeightBehavior? textHeightBehavior;
+
+  /// The color to use when painting the selection.
+  ///
+  /// This is ignored if [SelectionContainer.maybeOf] returns null
+  /// in the [BuildContext] of the [Text] widget.
+  ///
+  /// If null, the ambient [DefaultSelectionStyle] is used (if any); failing
+  /// that, the selection color defaults to [DefaultSelectionStyle.defaultColor]
+  /// (semi-transparent grey).
+  final Color? selectionColor;
 
   @override
   State<StatefulWidget> createState() => _TimeTextState();
@@ -152,9 +151,11 @@ class TimeText extends StatefulWidget {
 
 class _TimeTextState extends State<TimeText> {
   late String _timeString;
+  late Formatter _formatter;
   late final Timer _timer;
+  late final Duration _duration;
 
-  void _getTime() {
+  void _updateTimeString(Timer t) {
     final DateTime now = DateTime.now();
     final String formattedDateTime = _formatDateTime(now);
     setState(() {
@@ -163,14 +164,24 @@ class _TimeTextState extends State<TimeText> {
   }
 
   String _formatDateTime(DateTime dateTime) {
-    return widget.formatter(dateTime);
+    return _formatter(dateTime);
   }
 
   @override
   void initState() {
+    _formatter = widget.formatter ?? DateFormat.Hm().format;
+    _duration = widget.duration ?? Duration(seconds: 1);
     _timeString = _formatDateTime(DateTime.now());
-    _timer = Timer.periodic(widget.duration, (Timer t) => _getTime());
+    _timer = Timer.periodic(_duration, _updateTimeString);
     super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant TimeText oldWidget) {
+    if (oldWidget.formatter != widget.formatter) {
+      _formatter = widget.formatter ?? DateFormat.Hm().format;
+    }
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
