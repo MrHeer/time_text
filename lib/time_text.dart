@@ -33,7 +33,7 @@ class TimeText extends StatefulWidget {
   const TimeText({
     super.key,
     this.formatter,
-    this.duration,
+    this.duration = const Duration(seconds: 1),
     this.style,
     this.strutStyle,
     this.textAlign,
@@ -53,7 +53,7 @@ class TimeText extends StatefulWidget {
   final Formatter? formatter;
 
   /// update duration, default [Duration(seconds: 1)]
-  final Duration? duration;
+  final Duration duration;
 
   /// If non-null, the style to use for this text.
   ///
@@ -151,37 +151,24 @@ class TimeText extends StatefulWidget {
 
 class _TimeTextState extends State<TimeText> {
   late String _timeString;
-  late Formatter _formatter;
   late final Timer _timer;
-  late final Duration _duration;
+  final _defaultFormatter = DateFormat.Hm().format;
+
+  get formatter => widget.formatter ?? _defaultFormatter;
 
   void _updateTimeString(Timer t) {
-    final DateTime now = DateTime.now();
-    final String formattedDateTime = _formatDateTime(now);
+    final now = DateTime.now();
+    final formattedDateTime = formatter(now);
     setState(() {
       _timeString = formattedDateTime;
     });
   }
 
-  String _formatDateTime(DateTime dateTime) {
-    return _formatter(dateTime);
-  }
-
   @override
   void initState() {
-    _formatter = widget.formatter ?? DateFormat.Hm().format;
-    _duration = widget.duration ?? Duration(seconds: 1);
-    _timeString = _formatDateTime(DateTime.now());
-    _timer = Timer.periodic(_duration, _updateTimeString);
+    _timeString = formatter(DateTime.now());
+    _timer = Timer.periodic(widget.duration, _updateTimeString);
     super.initState();
-  }
-
-  @override
-  void didUpdateWidget(covariant TimeText oldWidget) {
-    if (oldWidget.formatter != widget.formatter) {
-      _formatter = widget.formatter ?? DateFormat.Hm().format;
-    }
-    super.didUpdateWidget(oldWidget);
   }
 
   @override

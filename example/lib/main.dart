@@ -34,26 +34,35 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+const _Colors = [
+  Color.fromRGBO(255, 0, 0, 1),
+  Color.fromRGBO(255, 128, 0, 1),
+  Color.fromRGBO(255, 255, 0, 1),
+  Color.fromRGBO(128, 255, 0, 1),
+  Color.fromRGBO(0, 255, 0, 1),
+  Color.fromRGBO(0, 255, 128, 1),
+  Color.fromRGBO(0, 255, 255, 1),
+  Color.fromRGBO(0, 128, 255, 1),
+  Color.fromRGBO(0, 0, 255, 1),
+  Color.fromRGBO(128, 0, 255, 1),
+  Color.fromRGBO(255, 0, 255, 1),
+  Color.fromRGBO(255, 0, 128, 1),
+];
+
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   late final _colorController = AnimationController(
     vsync: this,
-    duration: const Duration(seconds: 6),
+    duration: Duration(seconds: _Colors.length * 2),
   )..repeat();
-  final sequence = TweenSequence([
-    TweenSequenceItem(
-      tween: ColorTween(begin: Colors.red, end: Colors.green),
-      weight: 100 / 3,
-    ),
-    TweenSequenceItem(
-      tween: ColorTween(begin: Colors.green, end: Colors.blue),
-      weight: 100 / 3,
-    ),
-    TweenSequenceItem(
-      tween: ColorTween(begin: Colors.blue, end: Colors.red),
-      weight: 100 / 3,
-    ),
-  ]);
+  final sequence = TweenSequence(_Colors.indexed.map((it) {
+    final (index, _) = it;
+    return TweenSequenceItem(
+      tween: ColorTween(
+          begin: _Colors[index], end: _Colors[(index + 1) % _Colors.length]),
+      weight: 100 / _Colors.length,
+    );
+  }).toList());
   late final colorAnimation = _colorController.drive(sequence);
 
   @override
