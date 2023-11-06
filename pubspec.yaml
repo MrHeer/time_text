@@ -2,7 +2,6 @@ name: time_text
 description: A time text widget. You can use it to show current time.
 version: 0.1.1
 repository: https://github.com/MrHeer/time_text
-publish_to: https://pub.dev
 
 environment:
   sdk: '>=3.1.4 <4.0.0'
