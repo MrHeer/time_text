@@ -6,7 +6,7 @@ import 'package:time_text/time_text.dart';
 
 void main() {
   testWidgets('TimeText has a current time', (WidgetTester tester) async {
-    await tester.pumpWidget(TimeText(textDirection: TextDirection.ltr));
+    await tester.pumpWidget(const TimeText(textDirection: TextDirection.ltr));
     final currentTime = DateFormat.Hm().format(DateTime.now());
     final timeTextFinder = find.text(currentTime);
     expect(timeTextFinder, findsOneWidget);

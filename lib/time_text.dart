@@ -7,7 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart' show DateFormat;
 
 /// A callback used to format the [DateTime]
-typedef String Formatter(DateTime dateTime);
+typedef Formatter = String Function(DateTime dateTime);
 
 /// A run of text with a single style to show current time.
 ///
