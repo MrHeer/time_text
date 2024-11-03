@@ -1,4 +1,4 @@
-library time_text;
+library;
 
 import 'dart:async';
 import 'dart:ui' as ui show TextHeightBehavior;
@@ -41,7 +41,7 @@ class TimeText extends StatefulWidget {
     this.locale,
     this.softWrap,
     this.overflow,
-    this.textScaleFactor,
+    this.textScaler,
     this.maxLines,
     this.semanticsLabel,
     this.textWidthBasis,
@@ -103,15 +103,8 @@ class TimeText extends StatefulWidget {
   /// from the nearest [DefaultTextStyle] ancestor will be used.
   final TextOverflow? overflow;
 
-  /// The number of font pixels for each logical pixel.
-  ///
-  /// For example, if the text scale factor is 1.5, text will be 50% larger than
-  /// the specified font size.
-  ///
-  /// The value given to the constructor as textScaleFactor. If null, will
-  /// use the [MediaQueryData.textScaleFactor] obtained from the ambient
-  /// [MediaQuery], or 1.0 if there is no [MediaQuery] in scope.
-  final double? textScaleFactor;
+  /// {@macro flutter.painting.textPainter.textScaler}
+  final TextScaler? textScaler;
 
   /// An optional maximum number of lines for the text to span, wrapping if necessary.
   /// If the text exceeds the given number of lines, it will be truncated according
@@ -188,7 +181,7 @@ class _TimeTextState extends State<TimeText> {
       locale: widget.locale,
       softWrap: widget.softWrap,
       overflow: widget.overflow,
-      textScaleFactor: widget.textScaleFactor,
+      textScaler: widget.textScaler,
       maxLines: widget.maxLines,
       semanticsLabel: widget.semanticsLabel,
       textWidthBasis: widget.textWidthBasis,

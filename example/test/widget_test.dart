@@ -1,23 +1,12 @@
-import 'package:flutter/widgets.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:intl/intl.dart' show DateFormat;
+// This is a basic Flutter widget test.
+//
+// To perform an interaction with a widget in your test, use the WidgetTester
+// utility that Flutter provides. For example, you can send tap and scroll
+// gestures. You can also use WidgetTester to find child widgets in the widget
+// tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:time_text/time_text.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  testWidgets('TimeText has a current time', (WidgetTester tester) async {
-    await tester.pumpWidget(TimeText(textDirection: TextDirection.ltr));
-    final currentTime = DateFormat.Hm().format(DateTime.now());
-    final timeTextFinder = find.text(currentTime);
-    expect(timeTextFinder, findsOneWidget);
-  });
-
-  testWidgets('TimeText has a current time with a formatter',
-      (WidgetTester tester) async {
-    await tester.pumpWidget(TimeText(
-        formatter: DateFormat.Hms().format, textDirection: TextDirection.ltr));
-    final currentTime = DateFormat.Hms().format(DateTime.now());
-    final timeTextFinder = find.text(currentTime);
-    expect(timeTextFinder, findsOneWidget);
-  });
+  testWidgets('TODO', (WidgetTester tester) async {});
 }

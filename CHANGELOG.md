@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.2] - 2024-11-03
+
+- 'textScaleFactor' is deprecated and shouldn't be used. Use textScaler instead.
+- upgrade dependencies
+
 ## [0.1.1] - 2023-11-06
 
 - refactor TimeText
